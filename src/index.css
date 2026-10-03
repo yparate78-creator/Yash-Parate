@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --color-canvas: #1C2236;
+  --color-card: #252C45;
+  --color-card-hover: #2B3352;
+  --color-border-subtle: rgba(245, 241, 232, 0.08);
+  --color-border-amber: rgba(242, 179, 61, 0.35);
+  --color-ivory: #F5F1E8;
+  --color-muted: #A9B0C6;
+  --color-amber: #F2B33D;
+  --color-amber-glow: rgba(242, 179, 61, 0.18);
+  --color-indigo-glow: rgba(78, 88, 150, 0.25);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #1C2236;
+  color: #F5F1E8;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #181D2E;
+}
+::-webkit-scrollbar-thumb {
+  background: #2E3757;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F2B33D;
+}
+
+/* Subtle amber card glow */
+.card-hover-glow {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-hover-glow:hover {
+  transform: translateY(-4px);
+  border-color: rgba(242, 179, 61, 0.4);
+  box-shadow: 0 16px 36px -12px rgba(12, 15, 28, 0.6), 0 0 20px 2px rgba(242, 179, 61, 0.12);
+}
+
+/* Float animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes floatDelay {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(6px); }
+}
+
+@keyframes ambientPulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.05); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: floatDelay 7s ease-in-out infinite 1.5s;
+}
+
+.animate-ambient-glow {
+  animation: ambientPulse 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
